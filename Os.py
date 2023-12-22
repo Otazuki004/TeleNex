@@ -2,7 +2,7 @@ import os
 from datetime import *
 from telethon.sync import TelegramClient, events
 from telethon import *
-from aiogram
+from aiogram import *
 
 try:
     DIR = f"{os.getcwd()}/"
