@@ -13,7 +13,7 @@ try:
     with open(f"{DIR}token.txt", "r") as f:
         TOKEN = str(f.read())
     with open(f"{DIR}id.txt", "r") as g:
-        API_ID = int(g.read())
+        API_ID = str(g.read())
     with open(f"{DIR}hash.txt", "r") as h:
         API_HASH = str(h.read())
     with open(f"{DIR}own.txt", "r") as j:
