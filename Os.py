@@ -25,6 +25,6 @@ except Exception as e:
 
 Nex = Client("TeleNex", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
 
-@Nex.on_message(filters.command("start")
+@Nex.on_message(filters.command("start"))
 def start (Nex, message):
     message.reply_text("Hello I am TeleNex")
