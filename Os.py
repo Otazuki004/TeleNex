@@ -1,8 +1,9 @@
-#Setup Process
-
 import os
-from pyrogram import *
 from datetime import *
+from telethon.sync import TelegramClient, events
+from telethon import *
+from aiogram
+
 try:
     DIR = f"{os.getcwd()}/"
     print("Running On ", DIR)
@@ -10,21 +11,26 @@ except Exception as l:
     print("ERROR", l)
     
 try:
-    with open(f"{DIR}token.txt", "r") as f:
-        TOKEN = str(f.read())
-    with open(f"{DIR}id.txt", "r") as g:
-        API_ID = str(g.read())
-    with open(f"{DIR}hash.txt", "r") as h:
-        API_HASH = str(h.read())
-    with open(f"{DIR}own.txt", "r") as j:
-        OWN = str(j.read())
-    print("Success Got Bot Env")
-  
+    bot_token = TOKEN
+    api_id = a_id
+    api_hash = a_hash
 except Exception as e:
-    print("Error", e)
+	print("Somthing Went Wrong Getting ENV")
+	print(" ")
+	print(e)
 
-Nex = Client("TeleNex", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
+#Telethon Client
+Nex = TelegramClient('bot_session', api_id, api_hash).start(bot_token=bot_token)
+#AioGram Client
+TeleNex = None
 
-@Nex.on_message(filters.command("start"))
-def start (Nex, message):
-    message.reply_text("Hello I am TeleNex")
+@Nex.on(events.NewMessage(pattern='/start'))
+async def start(event):
+    await event.respond('Hello! I am your bot.')
+
+@Nex.on(events.NewMessage(pattern='/echo'))
+async def echo(event):
+    await event.respond(event.text)
+    exit()
+
+Nex.run_until_disconnected()
