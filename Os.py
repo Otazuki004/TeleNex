@@ -3,7 +3,12 @@
 import os
 from pyrogram import *
 from datetime import *
-
+try:
+    DIR = f"{os.getcwd()}/"
+    print("Running On ", DIR)
+except Exception as l:
+    print("ERROR", l)
+    
 try:
     with open(f"{DIR}token.txt", "r") as f:
         TOKEN = f.read()
@@ -17,3 +22,9 @@ try:
   
 except Exception as e:
     print("Error", e)
+
+Nex = Client("TeleNex", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
+
+@Nex.on_message(filters.command("start")
+def start (Nex, message):
+    message.reply_text("Hello I am TeleNex")
