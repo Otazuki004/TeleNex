@@ -17,7 +17,7 @@ try:
     with open(f"{DIR}hash.txt", "r") as h:
         API_HASH = str(h.read())
     with open(f"{DIR}own.txt", "r") as j:
-        OWN = int(j.read())
+        OWN = str(j.read())
     print("Success Got Bot Env")
   
 except Exception as e:
